@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# grdash: House Price Index for Greece
+# grdash: House Price Indices for Greece
 
 <!-- badges: start -->
 <!-- badges: end -->

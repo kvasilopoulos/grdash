@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# grdash: House Price Index for Greece
+# grdash: House Price Indices for Greece
 
 <!-- badges: start -->
 <!-- badges: end -->

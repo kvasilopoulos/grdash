@@ -1,0 +1,64 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# grdash: House Price Index for Greece
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Get the data from Bank of Greece website, which can be accessed through [here](https://www.bankofgreece.gr/RelatedDocuments). The file `analysis.R` 
+contains the recessary data manipulation in order to bring our data in tidy format.
+
+
+```{r get prices, message=FALSE, warning=FALSE}
+source("analysis.R")
+prices <- get_hp()
+prices
+```
+
+Plot the data according to the base year in order to make meaningfull comparisons.
+
+```{r plot }
+prices %>% 
+  ggplot(aes(date, value, col = name)) +
+  geom_line() +
+  facet_wrap(~ base, scales = "free_y") +
+  theme_bw() +
+  labs(
+    title = "Index of Prices of Dwellings",
+    subtitle = "source: Bank of Greece (BoG)"
+  )+
+  theme(
+    axis.title = element_blank(),
+    strip.background = element_blank(),
+    legend.title = element_blank(),
+    legend.position = "bottom"
+  )
+
+```
+
+## Exuberance analysis
+
+Apply the Phillips et al (2015) GSADF recursive test in order to identify periods
+of exuberance.
+
+```{r exuberance}
+library(exuber)
+rs <- prices %>% 
+  select(-base) %>% 
+  pivot_wider() %>% 
+  drop_na() %>% 
+  radf(., lag = 1)
+autoplot(rs)
+
+```

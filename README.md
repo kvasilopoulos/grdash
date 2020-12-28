@@ -7,9 +7,9 @@
 <!-- badges: end -->
 
 Get the data from Bank of Greece website, which can be accessed through
-[here](https://www.bankofgreece.gr/RelatedDocuments). The file
-`analysis.R` contains the recessary data manipulation in order to bring
-our data in tidy format.
+[here](https://www.bankofgreece.gr/en/statistics/real-estate-market/residential-and-commercial-property-price-indices-and-other-short-term-indices).
+The file `analysis.R` contains the recessary data manipulation in order
+to bring our data in tidy format.
 
 ``` r
 source("analysis.R")

@@ -36,9 +36,10 @@ comparisons.
 
 ``` r
 prices %>% 
+  mutate(base = paste0("Base Year: ", base)) %>% 
   ggplot(aes(date, value, col = name)) +
   geom_line() +
-  facet_wrap(~ base, scales = "free_y") +
+  facet_wrap(~ base, scales = "free_y", labeller = ) +
   theme_bw() +
   labs(
     title = "Index of Prices of Dwellings",
@@ -53,6 +54,37 @@ prices %>%
 ```
 
 ![](README_files/figure-gfm/plot-1.png)<!-- -->
+
+``` r
+prices %>% 
+  mutate(base = paste0("Base Year: ", base)) %>% 
+  group_by(name) %>% 
+  mutate(ret = transx::ldiffx(value)*100) %>% 
+  ggplot(aes(date, ret, col = name)) +
+  geom_line() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  facet_wrap(~ base, scales = "free_y") +
+  theme_bw() +
+  labs(
+    title = "Percentage changes of Prices of Dwellings",
+    subtitle = "source: Bank of Greece (BoG)",
+    y = "Change (%)"
+  )+
+  theme(
+    axis.title = element_blank(),
+    strip.background = element_blank(),
+    legend.title = element_blank(),
+    legend.position = "bottom"
+  )
+#> v Filling 1 value.
+#> v Filling 1 value.
+#> v Filling 1 value.
+#> v Filling 1 value.
+#> v Filling 1 value.
+#> Warning: Removed 5 row(s) containing missing values (geom_path).
+```
+
+![](README_files/figure-gfm/plot-ret-1.png)<!-- -->
 
 ## Exuberance analysis
 

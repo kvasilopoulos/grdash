@@ -8,6 +8,7 @@ library(readxl)
 get_hp <- function(rebase = NULL) {
   
   tmpfile <- tempfile(fileext = ".xls")
+  # TODO this has to be an online source
   file <- "https://www.bankofgreece.gr/RelatedDocuments/BG_PRICES_INDICES_HISTORICAL_SERIES.xls"
   download.file(file, tmpfile, mode = "wb")
   

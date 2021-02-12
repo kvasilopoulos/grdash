@@ -66,7 +66,7 @@ prices %>%
   facet_wrap(~ base, scales = "free_y") +
   theme_bw() +
   labs(
-    title = "Percentage changes of Prices of Dwellings",
+    title = "Prices of Dwellings, Quarterly Change",
     subtitle = "source: Bank of Greece (BoG)",
     y = "Change (%)"
   )+
@@ -85,6 +85,37 @@ prices %>%
 ```
 
 ![](README_files/figure-gfm/plot-ret-1.png)<!-- -->
+
+``` r
+prices %>% 
+  mutate(base = paste0("Base Year: ", base)) %>% 
+  group_by(name) %>% 
+  mutate(ret = transx::ldiffx(value, 4)*100) %>% 
+  ggplot(aes(date, ret, col = name)) +
+  geom_line() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  facet_wrap(~ base, scales = "free_y") +
+  theme_bw() +
+  labs(
+    title = "Prices of Dwellings, Annual Change",
+    subtitle = "source: Bank of Greece (BoG)",
+    y = "Change (%)"
+  )+
+  theme(
+    axis.title = element_blank(),
+    strip.background = element_blank(),
+    legend.title = element_blank(),
+    legend.position = "bottom"
+  )
+#> v Filling 4 values.
+#> v Filling 4 values.
+#> v Filling 4 values.
+#> v Filling 4 values.
+#> v Filling 4 values.
+#> Warning: Removed 20 row(s) containing missing values (geom_path).
+```
+
+![](README_files/figure-gfm/plot-ret-yoy-1.png)<!-- -->
 
 ## Exuberance analysis
 

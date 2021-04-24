@@ -15,7 +15,7 @@ to bring our data in tidy format.
 source("analysis.R")
 prices <- get_hp()
 prices
-#> # A tibble: 510 x 4
+#> # A tibble: 514 x 4
 #>    date       name  value  base
 #>    <date>     <fct> <dbl> <dbl>
 #>  1 1997-01-01 Urban  96.2  1997
@@ -28,7 +28,7 @@ prices
 #>  8 1998-10-01 Urban 118.   1997
 #>  9 1999-01-01 Urban 120.   1997
 #> 10 1999-04-01 Urban 124.   1997
-#> # ... with 500 more rows
+#> # ... with 504 more rows
 ```
 
 Plot the data according to the base year in order to make meaningfull
@@ -91,6 +91,7 @@ prices %>%
   mutate(base = paste0("Base Year: ", base)) %>% 
   group_by(name) %>% 
   mutate(ret = transx::ldiffx(value, 4)*100) %>% 
+  # filter(name == "Thessaloniki") %>% 
   ggplot(aes(date, ret, col = name)) +
   geom_line() +
   geom_hline(yintercept = 0, linetype = "dashed") +

@@ -78,6 +78,7 @@ prices %>%
   mutate(base = paste0("Base Year: ", base)) %>% 
   group_by(name) %>% 
   mutate(ret = transx::ldiffx(value, 4)*100) %>% 
+  # filter(name == "Thessaloniki") %>% 
   ggplot(aes(date, ret, col = name)) +
   geom_line() +
   geom_hline(yintercept = 0, linetype = "dashed") +

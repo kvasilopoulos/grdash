@@ -15,7 +15,7 @@ to bring our data in tidy format.
 source("analysis.R")
 prices <- get_hp()
 prices
-#> # A tibble: 514 x 4
+#> # A tibble: 518 x 4
 #>    date       name  value  base
 #>    <date>     <fct> <dbl> <dbl>
 #>  1 1997-01-01 Urban  96.2  1997
@@ -28,7 +28,7 @@ prices
 #>  8 1998-10-01 Urban 118.   1997
 #>  9 1999-01-01 Urban 120.   1997
 #> 10 1999-04-01 Urban 124.   1997
-#> # ... with 504 more rows
+#> # ... with 508 more rows
 ```
 
 Plot the data according to the base year in order to make meaningfull
@@ -76,11 +76,11 @@ prices %>%
     legend.title = element_blank(),
     legend.position = "bottom"
   )
-#> v Filling 1 value.
-#> v Filling 1 value.
-#> v Filling 1 value.
-#> v Filling 1 value.
-#> v Filling 1 value.
+#> i Filling 1 value.
+#> i Filling 1 value.
+#> i Filling 1 value.
+#> i Filling 1 value.
+#> i Filling 1 value.
 #> Warning: Removed 5 row(s) containing missing values (geom_path).
 ```
 
@@ -108,11 +108,11 @@ prices %>%
     legend.title = element_blank(),
     legend.position = "bottom"
   )
-#> v Filling 4 values.
-#> v Filling 4 values.
-#> v Filling 4 values.
-#> v Filling 4 values.
-#> v Filling 4 values.
+#> i Filling 4 values.
+#> i Filling 4 values.
+#> i Filling 4 values.
+#> i Filling 4 values.
+#> i Filling 4 values.
 #> Warning: Removed 20 row(s) containing missing values (geom_path).
 ```
 

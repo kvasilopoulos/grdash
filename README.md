@@ -15,7 +15,7 @@ to bring our data in tidy format.
 source("analysis.R")
 prices <- get_hp()
 prices
-#> # A tibble: 518 x 4
+#> # A tibble: 550 × 4
 #>    date       name  value  base
 #>    <date>     <fct> <dbl> <dbl>
 #>  1 1997-01-01 Urban  96.2  1997
@@ -28,10 +28,10 @@ prices
 #>  8 1998-10-01 Urban 118.   1997
 #>  9 1999-01-01 Urban 120.   1997
 #> 10 1999-04-01 Urban 124.   1997
-#> # ... with 508 more rows
+#> # ℹ 540 more rows
 ```
 
-Plot the data according to the base year in order to make meaningfull
+Plot the data according to the base year in order to make meaningful
 comparisons.
 
 ``` r
@@ -39,7 +39,7 @@ prices %>%
   mutate(base = paste0("Base Year: ", base)) %>% 
   ggplot(aes(date, value, col = name)) +
   geom_line() +
-  facet_wrap(~ base, scales = "free_y", labeller = ) +
+  facet_wrap(~ base, scales = "free_y",) +
   theme_bw() +
   labs(
     title = "Index of Prices of Dwellings",
@@ -76,12 +76,12 @@ prices %>%
     legend.title = element_blank(),
     legend.position = "bottom"
   )
-#> i Filling 1 value.
-#> i Filling 1 value.
-#> i Filling 1 value.
-#> i Filling 1 value.
-#> i Filling 1 value.
-#> Warning: Removed 5 row(s) containing missing values (geom_path).
+#> ℹ Filling 1 value.
+#> ℹ Filling 1 value.
+#> ℹ Filling 1 value.
+#> ℹ Filling 1 value.
+#> ℹ Filling 1 value.
+#> Warning: Removed 5 rows containing missing values (`geom_line()`).
 ```
 
 ![](README_files/figure-gfm/plot-ret-1.png)<!-- -->
@@ -108,12 +108,12 @@ prices %>%
     legend.title = element_blank(),
     legend.position = "bottom"
   )
-#> i Filling 4 values.
-#> i Filling 4 values.
-#> i Filling 4 values.
-#> i Filling 4 values.
-#> i Filling 4 values.
-#> Warning: Removed 20 row(s) containing missing values (geom_path).
+#> ℹ Filling 4 values.
+#> ℹ Filling 4 values.
+#> ℹ Filling 4 values.
+#> ℹ Filling 4 values.
+#> ℹ Filling 4 values.
+#> Warning: Removed 20 rows containing missing values (`geom_line()`).
 ```
 
 ![](README_files/figure-gfm/plot-ret-yoy-1.png)<!-- -->

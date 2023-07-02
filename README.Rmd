@@ -14,11 +14,10 @@ knitr::opts_chunk$set(
 # grdash: House Price Indices for Greece
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-Get the data from Bank of Greece website, which can be accessed through [here](https://www.bankofgreece.gr/en/statistics/real-estate-market/residential-and-commercial-property-price-indices-and-other-short-term-indices). The file `analysis.R` 
-contains the recessary data manipulation in order to bring our data in tidy format.
-
+Get the data from Bank of Greece website, which can be accessed through [here](https://www.bankofgreece.gr/en/statistics/real-estate-market/residential-and-commercial-property-price-indices-and-other-short-term-indices). The file `analysis.R` contains the recessary data manipulation in order to bring our data in tidy format.
 
 ```{r get prices, message=FALSE, warning=FALSE}
 source("analysis.R")
@@ -26,14 +25,14 @@ prices <- get_hp()
 prices
 ```
 
-Plot the data according to the base year in order to make meaningfull comparisons.
+Plot the data according to the base year in order to make meaningful comparisons.
 
 ```{r plot}
 prices %>% 
   mutate(base = paste0("Base Year: ", base)) %>% 
   ggplot(aes(date, value, col = name)) +
   geom_line() +
-  facet_wrap(~ base, scales = "free_y", labeller = ) +
+  facet_wrap(~ base, scales = "free_y",) +
   theme_bw() +
   labs(
     title = "Index of Prices of Dwellings",
@@ -72,7 +71,6 @@ prices %>%
 
 ```
 
-
 ```{r plot-ret-yoy}
 prices %>% 
   mutate(base = paste0("Base Year: ", base)) %>% 
@@ -98,12 +96,9 @@ prices %>%
 
 ```
 
-
-
 ## Exuberance analysis
 
-Apply the Phillips et al (2015) GSADF recursive test in order to identify periods
-of exuberance.
+Apply the Phillips et al (2015) GSADF recursive test in order to identify periods of exuberance.
 
 ```{r exuberance}
 library(exuber)

@@ -1,0 +1,4 @@
+# jarl has no line-length rule - lintr's line_length_linter(120) is now
+# enforced (best-effort) by air's line-width = 120 in air.toml instead.
+# No other .lintr customization existed in this repo to port; jarl's
+# defaults are used as-is.

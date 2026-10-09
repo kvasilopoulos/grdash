@@ -24,7 +24,7 @@ get_hp <- function(rebase = NULL) {
   ind2 <- c(ind[-1] - 1, nrow(prices))
 
   splits <- list()
-  for (i in 1:length(ind)) {
+  for (i in seq_along(ind)) {
     splits[[i]] <- prices[ind[i]:(ind2[i]), ]
   }
   names(splits) <- c("Urban", "Athens", "Thessaloniki", "Other cities", "Other Urban Areas")

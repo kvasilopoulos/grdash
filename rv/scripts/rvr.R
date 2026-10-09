@@ -2,15 +2,23 @@
 .rv$config_path <- file.path(normalizePath(getwd()), "rproject.toml")
 .rv$summary <- function(json = FALSE) {
   command <- c("summary")
-  if (json) { command <- c(command, "--json") }
+  if (json) {
+    command <- c(command, "--json")
+  }
   .rv$command(command)
 }
-.rv$plan <- function() { .rv$command("plan") }
-.rv$sync <- function() { .rv$command("sync") }
+.rv$plan <- function() {
+  .rv$command("plan")
+}
+.rv$sync <- function() {
+  .rv$command("sync")
+}
 .rv$add <- function(..., dry_run = FALSE) {
   dots <- unlist(list(...))
   command <- c("add", dots)
-  if (dry_run) { command <- c(command, "--dry-run") }
+  if (dry_run) {
+    command <- c(command, "--dry-run")
+  }
   .rv$command(command)
 }
 
